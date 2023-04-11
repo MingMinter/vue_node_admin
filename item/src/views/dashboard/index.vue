@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard-container">
     <div class="title">欢迎进入vue+node后台管理系统</div>
-    <div class="hint1">由于演示需要，某些固定数据无法进行编辑和删除，可新增数据进行测试！<span>（如需完整体验，请将代码拉到本地进行使用）</span></div>
+<!--    <div class="hint1">由于演示需要，某些固定数据无法进行编辑和删除，可新增数据进行测试！<span>（如需完整体验，请将代码拉到本地进行使用）</span></div>-->
     <el-row type="flex" justify="center">
       <el-col :span="8">
        <div class="flex">
