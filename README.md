@@ -22,7 +22,7 @@
 1. ##### #克隆项目
 
    ```
-   git clone https://gitee.com/y_project/RuoYi-Vue
+   git clone https://github.com/MingMinter/vue_node_admin.git
    ```
 
 2. ##### #进入目录
@@ -82,7 +82,7 @@
 1. ##### 				#克隆项目（如果已经执行了前端页面启动的克隆，可略过这点）
 
    ```
-   git clone https://gitee.com/y_project/RuoYi-Vue
+   git clone https://github.com/MingMinter/vue_node_admin.git
    ```
 
 2. #####  #进入目录
