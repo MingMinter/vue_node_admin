@@ -1,0 +1,44 @@
+// base color
+$blue:#324157;
+$light-blue:#3A71A8;
+$red:#C03639;
+$pink: #E65D6E;
+$green: #30B08F;
+$tiffany: #4AB7BD;
+$yellow:#FEC171;
+$panGreen: #30B08F;
+
+// sidebar
+//$menuText:#bfcbd9;
+//$menuActiveText:#409EFF;
+//$subMenuActiveText:#f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+
+//$menuBg:#304156;
+
+
+//$subMenuBg: #bd0d8e;
+//$subMenuHover:#001528;
+
+$sideBarWidth: 210px;
+
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+
+$menuBg:var(--menuBg-color, #304156);//默认背景
+$menuSubBg:var(--menuSubBg-color, #304156);//展开内部背景颜色
+$menuText:var(--menuText-color, #bfcad5);//默认文字
+$menuActiveText:var(--menuActiveText-color, #409eff);//选中的文字
+$menuSubActiveText:var(--menuSubActiveText-color, #fff);//展开选中父级的文字颜色
+$menuHoverBg:var(--menuHoverBg-color, #001528);//hover背景颜色
+// the :export directive is the magic sauce for webpack
+// https://www.bluematador.com/blog/how-to-share-variables-between-js-and-sass
+:export {
+  menuBg: $menuBg;//默认背景颜色
+  subMenuBg:$menuSubBg;//展开内部背景颜色
+  menuText: $menuText;//默认文字颜色
+  menuActiveText: $menuActiveText;//选中后文字颜色
+  subMenuActiveText: $menuSubActiveText;//展开选中父级的文字颜色
+  menuHover: $menuHoverBg;//hover颜色
+  subMenuHover: $menuHoverBg;//展开内部hover颜色
+  sideBarWidth: $sideBarWidth;
+}
