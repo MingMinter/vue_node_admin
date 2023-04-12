@@ -12,7 +12,7 @@
       <el-col :span="8">
        <div class="flex">
          <img class="img-icon" src="@/assets/images/github.png" alt="gitee">
-         <el-link type="primary" target="_blank" href="https://github.com/MingMinter/vue_node">https://github.com/MingMinter/vue_node</el-link>
+         <el-link type="primary" target="_blank" href="https://github.com/MingMinter/vue_node_admin">https://github.com/MingMinter/vue_node_admin</el-link>
        </div>
       </el-col>
     </el-row>

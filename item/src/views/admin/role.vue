@@ -64,7 +64,7 @@
           <el-input v-model="form.name" placeholder="请输入角色名称" />
         </el-form-item>
         <el-form-item label="权限字符" prop="roleKey">
-          <el-input v-english="{value:{symbol:'_'},that:this,form:'form',name:'roleKey'}" v-model="form.roleKey" placeholder="请输入权限字符" />
+          <el-input v-model="form.roleKey" placeholder="请输入权限字符" />
         </el-form-item>
         <el-form-item label="菜单权限" prop="roles">
           <el-tree
