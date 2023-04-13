@@ -34,33 +34,36 @@ function getRouter(req,res,sidebar=false){
         if (!userRole.userRole || userRole.userRole == null || userRole.userRole == "null") userRole.userRole = "";
         //角色权限
         let roles = userRole.userRole.split(",");
-        const { user } = userRole;
         pool.query(sql, (err, result) => {
             if (err) return res.send(utils.returnData({code: -1,err,req}));
             let list = [...result],routerArr=[];
-            const filterAsyncRoutes = (lists, parentId, pathView = "") =>
-                lists
-                    .filter((t) => t.parentId === parentId)
-                    .map((t) => {
-                        const meta = t.meta ? JSON.parse(t.meta) : {};
-                        const title = meta.title || "---";
-                        const path = pathView + t.path;
-                        const children = filterAsyncRoutes(lists, t.id, path);
-                        const obj = {...t, meta, title, path, children, pathView: t.path};
-                        //按钮自动隐藏
-                        if (obj.menuType === "F") obj.hidden = 1;
+            let filterAsyncRoutes = (lists, parentId, pathView = "") => {
+                let resArr = [], obj = {};
+                lists.map((t) => {
+                    let objs = {...t};
+                    try {objs.meta = JSON.parse(objs.meta);} catch (err) {objs.meta = {};}
+                    objs.title = objs.meta.title || "---";
+                    objs.pathView = t.path;
+                    //按钮自动隐藏
+                    if(objs.menuType==="F") objs.hidden=1;
+                    //递归
+                    if (objs.parentId == parentId) {
+                        objs.path = pathView + objs.path;
+                        obj = {...objs, children: filterAsyncRoutes(list, objs.id, objs.path)};
                         //菜单下有子级，单独拿出来
-                        if (obj.menuType === "C" && obj.children?.length !== 0) {
-                            routerArr.push(...obj.children);
-                            sidebar && delete obj.children;
+                        if(obj.menuType==="C"&&obj.children&&obj.children.length!=0){
+                            routerArr.push(...obj.children)
+                            sidebar&&delete obj.children;
                         }
                         //如果是总管理
-                        if (user.admin === 1 || userRole.roleAdmin) return obj;
-                        //只拿角色权限通过的
-                        if (roles.some((role) => obj.id === role)) return obj;
-                        return null;
-                    })
-                    .filter(Boolean);
+                        if (userRole.user.admin == 1 || userRole.roleAdmin ) {resArr.push(obj);} else {
+                            //只拿角色权限通过的
+                            if (roles.some((role) => obj.id == role)) resArr.push(obj);
+                        }
+                    }
+                });
+                return resArr;
+            };
             let routerMenu = filterAsyncRoutes(list, 0, "");
             //如果是独立的（一级）
             sidebar&&routerMenu.forEach(t=>{
