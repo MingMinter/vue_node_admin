@@ -31,7 +31,7 @@ CREATE TABLE `dict` (
 
 /*Data for the table `dict` */
 
-insert  into `dict`(`id`,`name`,`type`,`create_time`,`remark`) values 
+insert  into `dict`(`id`,`name`,`type`,`create_time`,`remark`) values
 (1,'字典1','type1','2023-03-27 17:35:34','第一'),
 (2,'字典2','type2','2023-03-30 14:36:52','第二');
 
@@ -54,7 +54,7 @@ CREATE TABLE `dict_item` (
 
 /*Data for the table `dict_item` */
 
-insert  into `dict_item`(`id`,`dict_id`,`dict_label`,`dict_value`,`dict_sort`,`dict_class`,`status`,`remark`,`create_time`) values 
+insert  into `dict_item`(`id`,`dict_id`,`dict_label`,`dict_value`,`dict_sort`,`dict_class`,`status`,`remark`,`create_time`) values
 (4,1,'字典1第一','1',0,'primary',1,'字典1第一备注','2023-03-30 15:44:00'),
 (5,1,'字典1第二','2',1,'danger',1,'字典1第二','2023-03-30 15:44:34'),
 (6,2,'字典2第一','1',0,'default',1,'字典2第一备注','2023-03-30 15:48:28'),
@@ -74,7 +74,7 @@ CREATE TABLE `more` (
 
 /*Data for the table `more` */
 
-insert  into `more`(`id`,`name`,`remark`,`create_time`) values 
+insert  into `more`(`id`,`name`,`remark`,`create_time`) values
 (8,'第二家店铺','2','2023-04-06 15:44:53'),
 (5,'第一家店铺','1','2023-04-06 15:44:53');
 
@@ -94,7 +94,7 @@ CREATE TABLE `roles` (
 
 /*Data for the table `roles` */
 
-insert  into `roles`(`id`,`name`,`roles`,`checked_roles`,`role_key`,`create_time`) values 
+insert  into `roles`(`id`,`name`,`roles`,`checked_roles`,`role_key`,`create_time`) values
 (1,'admin','8,9,10,2,5,11,17,1','8,9,10,5,11,17','admin','2023-04-06 15:39:40'),
 (12,'中级管家','49,30,43,31,32,44,65,68','49,43,31,32,68','middle','2023-04-06 15:39:40'),
 (13,'初级管家','30,43,31,32,44,65,66,68','43,31,32,66,68','primary','2023-04-06 15:39:40');
@@ -125,7 +125,7 @@ CREATE TABLE `router_menu` (
 
 /*Data for the table `router_menu` */
 
-insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_show`,`name`,`layout`,`parent_view`,`meta`,`component`,`sort`,`update_time`,`alone`,`role_key`,`menu_type`) values 
+insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_show`,`name`,`layout`,`parent_view`,`meta`,`component`,`sort`,`update_time`,`alone`,`role_key`,`menu_type`) values
 (1,0,'/menus',0,'',0,'',1,0,'{\"title\":\"系统设置\",\"icon\":\"menu\",\"noCache\":0}','/',9,'2023-03-30 11:10:08',0,'','M'),
 (26,1,'/user',0,'',0,'user',0,0,'{\"title\":\"用户管理\",\"icon\":\"user\",\"noCache\":1}','admin/user',2,'2023-04-10 09:40:38',0,'','C'),
 (27,1,'/more',0,'',0,'more',0,0,'{\"title\":\"多账号管理\",\"icon\":\"peoples\",\"noCache\":1}','admin/more',3,'2023-04-10 09:40:51',0,'','C'),
@@ -164,7 +164,7 @@ insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_s
 (108,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户新增\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:31:30',0,'more_add','F'),
 (109,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户修改\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:31:47',0,'more_up','F'),
 (110,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户删除\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:32:07',0,'more_delete','F'),
-(113,0,'https://github.com/MingMinter/vue_node',0,'',0,'GitHub',1,0,'{\"title\":\"GitHub直达\",\"icon\":\"link\",\"noCache\":1}','/',16,'2023-04-11 11:24:24',0,NULL,'C');
+(113,0,'https://github.com/MingMinter/vue_node_admin',0,'',0,'GitHub',1,0,'{\"title\":\"GitHub直达\",\"icon\":\"link\",\"noCache\":1}','/',16,'2023-04-11 11:24:24',0,NULL,'C');
 
 /*Table structure for table `tests` */
 
@@ -180,7 +180,7 @@ CREATE TABLE `tests` (
 
 /*Data for the table `tests` */
 
-insert  into `tests`(`id`,`name`,`remark`,`more_id`) values 
+insert  into `tests`(`id`,`name`,`remark`,`more_id`) values
 (3,'第一家店铺的数据1','第一',5),
 (5,'第二家店铺的数据1','第二',8),
 (8,'第二家店铺的数据2','第二',8),
@@ -207,7 +207,7 @@ CREATE TABLE `theme` (
 
 /*Data for the table `theme` */
 
-insert  into `theme`(`id`,`user_id`,`menu_bg`,`menu_sub_bg`,`menu_text`,`menu_active_text`,`menu_sub_active_text`,`menu_hover_bg`) values 
+insert  into `theme`(`id`,`user_id`,`menu_bg`,`menu_sub_bg`,`menu_text`,`menu_active_text`,`menu_sub_active_text`,`menu_hover_bg`) values
 (1,1,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
 (2,25,'#84EB16','#038293','#1C1C1C','#F3F359','#1C1C1C','#C7C7C7'),
 (3,18,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
@@ -235,7 +235,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`name`,`roles_id`,`remark`,`admin`,`pwd`,`more_id`,`create_time`) values 
+insert  into `user`(`id`,`name`,`roles_id`,`remark`,`admin`,`pwd`,`more_id`,`create_time`) values
 (1,'admin','1','管理员',1,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-05 15:32:33'),
 (25,'店铺2','12','中级管家',0,'f379eaf3c831b04de153469d1bec345e',8,'2023-03-16 15:32:33'),
 (18,'店铺1','13','初级管家',0,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-03 15:32:33');
