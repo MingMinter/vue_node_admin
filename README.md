@@ -124,7 +124,7 @@
 
 
 
-- #### 		后端功能 (<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/后端管理详解" target="_blank">点击进入后端功能详细文档</a>)
+- #### 		后端功能 (<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/后端功能详解" target="_blank">点击进入后端功能详细文档</a>)
 
   > - [x] 
   >   	​			***jsonwebtoken（token）***

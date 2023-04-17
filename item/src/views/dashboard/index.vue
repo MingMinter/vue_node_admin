@@ -30,7 +30,7 @@
       <el-col :span="8">
         <div class="flex">
           <img class="img-icon" src="@/assets/images/node.png" alt="gitee">
-          <el-link type="primary" target="_blank" href="https://gitee.com/MMinter/vue_node_wiki/wikis/%E5%90%8E%E7%AB%AF%E7%AE%A1%E7%90%86%E8%AF%A6%E8%A7%A3">点击进入后端功能详解</el-link>
+          <el-link type="primary" target="_blank" href="https://gitee.com/MMinter/vue_node_wiki/wikis/%E5%90%8E%E7%AB%AF%E5%8A%9F%E8%83%BD%E8%AF%A6%E8%A7%A3">点击进入后端功能详解</el-link>
         </div>
       </el-col>
     </el-row>
