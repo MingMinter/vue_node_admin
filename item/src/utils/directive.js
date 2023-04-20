@@ -1,5 +1,4 @@
 import Vue from "vue";
-import {checkPermi, checkRole} from "@/utils/permission";
 /**
  *  v-number="{value:0,that:this,form:'form',name:'realDraw'}"
  *  v-number="{value:2,that:this,form:'form',name:'realDraw'}"
@@ -22,8 +21,8 @@ Vue.directive('number', {
         if(isNaN(Number(value))) return setEvent();
         function setEvent(setvalue=""){
           setTimeout(()=>{
-            query.value.that.form&&query.value.that.$set(query.value.that.form,query.value.name,setvalue.replace(/[^0-9]/g,''));
-            !query.value.that.form&&query.value.that.$set(query.value.that,query.value.name,setvalue.replace(/[^0-9]/g,''));
+            query.value.form&&query.value.that.$set(query.value.that[query.value.form],query.value.name,setvalue.replace(/[^0-9]/g,''));
+            !query.value.form&&query.value.that.$set(query.value.that,query.value.name,setvalue.replace(/[^0-9]/g,''));
           })
         }
         setEvent(value)
@@ -77,8 +76,8 @@ Vue.directive('money', {
         value=valueArr.length>1?`${valueArr[0]}.${valueArr[1]}`:valueArr[0];
         function setEvent(setValue=""){
           setTimeout(()=>{
-            query.value.that.form&&query.value.that.$set(query.value.that.form,query.value.name,setValue.replace(reg,''));
-            !query.value.that.form&&query.value.that.$set(query.value.that,query.value.name,setValue.replace(reg,''));
+            query.value.form&&query.value.that.$set(query.value.that[query.value.form],query.value.name,setValue.replace(reg,''));
+            !query.value.form&&query.value.that.$set(query.value.that,query.value.name,setValue.replace(reg,''));
           })
         }
         setEvent(value)
@@ -111,14 +110,14 @@ Vue.directive('english', {
         //小写
         if(size==="min")value=value.toLowerCase();
         //字数
-        if(sum) value=value.slice(0,queryValue.sum);
+        if(sum) value=value.slice(0,sum);
         let reg=/[^a-zA-Z]/g;
         //如果兼容字符
         if(symbol) reg=new RegExp(`[^a-zA-Z${symbol}]`,"g")//g;
         function setEvent(setValue=""){
           setTimeout(()=>{
-            query.value.that.form&&query.value.that.$set(query.value.that.form,query.value.name,setValue.replace(reg,''));
-            !query.value.that.form&&query.value.that.$set(query.value.that,query.value.name,setValue.replace(reg,''));
+            query.value.form&&query.value.that.$set(query.value.that[query.value.form],query.value.name,setValue.replace(reg,''));
+            !query.value.form&&query.value.that.$set(query.value.that,query.value.name,setValue.replace(reg,''));
           })
         }
         setEvent(value)
