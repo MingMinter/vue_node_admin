@@ -1,4 +1,5 @@
 import Vue from "vue";
+import {checkPermi,checkRole} from "@/utils/permission";
 /**
  *  v-number="{value:0,that:this,form:'form',name:'realDraw'}"
  *  v-number="{value:2,that:this,form:'form',name:'realDraw'}"
