@@ -27,11 +27,11 @@ CREATE TABLE `dict` (
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `remark` varchar(255) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `dict` */
 
-insert  into `dict`(`id`,`name`,`type`,`create_time`,`remark`) values
+insert  into `dict`(`id`,`name`,`type`,`create_time`,`remark`) values 
 (1,'字典1','type1','2023-03-27 17:35:34','第一'),
 (2,'字典2','type2','2023-03-30 14:36:52','第二');
 
@@ -50,11 +50,11 @@ CREATE TABLE `dict_item` (
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 
 /*Data for the table `dict_item` */
 
-insert  into `dict_item`(`id`,`dict_id`,`dict_label`,`dict_value`,`dict_sort`,`dict_class`,`status`,`remark`,`create_time`) values
+insert  into `dict_item`(`id`,`dict_id`,`dict_label`,`dict_value`,`dict_sort`,`dict_class`,`status`,`remark`,`create_time`) values 
 (4,1,'字典1第一','1',0,'primary',1,'字典1第一备注','2023-03-30 15:44:00'),
 (5,1,'字典1第二','2',1,'danger',1,'字典1第二','2023-03-30 15:44:34'),
 (6,2,'字典2第一','1',0,'default',1,'字典2第一备注','2023-03-30 15:48:28'),
@@ -74,7 +74,7 @@ CREATE TABLE `more` (
 
 /*Data for the table `more` */
 
-insert  into `more`(`id`,`name`,`remark`,`create_time`) values
+insert  into `more`(`id`,`name`,`remark`,`create_time`) values 
 (8,'第二家店铺','2','2023-04-06 15:44:53'),
 (5,'第一家店铺','1','2023-04-06 15:44:53');
 
@@ -94,10 +94,10 @@ CREATE TABLE `roles` (
 
 /*Data for the table `roles` */
 
-insert  into `roles`(`id`,`name`,`roles`,`checked_roles`,`role_key`,`create_time`) values
+insert  into `roles`(`id`,`name`,`roles`,`checked_roles`,`role_key`,`create_time`) values 
 (1,'admin','8,9,10,2,5,11,17,1','8,9,10,5,11,17','admin','2023-04-06 15:39:40'),
-(12,'中级管家','49,30,43,31,32,44,65,68','49,43,31,32,68','middle','2023-04-06 15:39:40'),
-(13,'初级管家','30,43,31,32,44,65,66,68','43,31,32,66,68','primary','2023-04-06 15:39:40');
+(12,'中级管家','49,30,43,31,32,44,65,68,113','49,43,31,32,68','middle','2023-04-06 15:39:40'),
+(13,'初级管家','30,43,31,32,44,65,66,68,113','43,31,32,66,68','primary','2023-04-06 15:39:40');
 
 /*Table structure for table `router_menu` */
 
@@ -125,11 +125,11 @@ CREATE TABLE `router_menu` (
 
 /*Data for the table `router_menu` */
 
-insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_show`,`name`,`layout`,`parent_view`,`meta`,`component`,`sort`,`update_time`,`alone`,`role_key`,`menu_type`) values
+insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_show`,`name`,`layout`,`parent_view`,`meta`,`component`,`sort`,`update_time`,`alone`,`role_key`,`menu_type`) values 
 (1,0,'/menus',0,'',0,'',1,0,'{\"title\":\"系统设置\",\"icon\":\"menu\",\"noCache\":0}','/',9,'2023-03-30 11:10:08',0,'','M'),
 (26,1,'/user',0,'',0,'user',0,0,'{\"title\":\"用户管理\",\"icon\":\"user\",\"noCache\":1}','admin/user',2,'2023-04-10 09:40:38',0,'','C'),
 (27,1,'/more',0,'',0,'more',0,0,'{\"title\":\"多账号管理\",\"icon\":\"peoples\",\"noCache\":1}','admin/more',3,'2023-04-10 09:40:51',0,'','C'),
-(49,0,'/icon',0,'',0,'Icon',1,0,'{\"title\":\"图标\",\"icon\":\"icon\",\"noCache\":0}','icons/index',0,'2023-04-10 15:07:13',0,NULL,'C'),
+(49,0,'/icon',0,'',0,'Icon',1,0,'{\"title\":\"图标\",\"icon\":\"icon\",\"noCache\":0}','icons/index',0,'2023-04-12 09:49:45',0,NULL,'C'),
 (8,1,'/role',0,'',0,'Role',0,0,'{\"title\":\"角色管理\",\"icon\":\"role\",\"noCache\":1}','admin/role',1,'2023-04-10 09:40:34',0,'','C'),
 (30,0,'/test',0,'',0,'test',1,0,'{\"title\":\"测试数据\",\"icon\":\"bug\",\"noCache\":0}','/',3,'2022-07-07 17:19:09',0,'','M'),
 (10,1,'/menu',0,'',0,'Menu',0,0,'{\"title\":\"菜单管理\",\"icon\":\"list\",\"noCache\":1}','admin/menu',0,'2023-03-30 16:18:33',0,'','C'),
@@ -164,7 +164,7 @@ insert  into `router_menu`(`id`,`parent_id`,`path`,`hidden`,`redirect`,`always_s
 (108,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户新增\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:31:30',0,'more_add','F'),
 (109,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户修改\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:31:47',0,'more_up','F'),
 (110,106,'/',0,'',0,'',0,0,'{\"title\":\"多账户删除\",\"icon\":\"people\",\"noCache\":1}','/',0,'2023-04-03 17:32:07',0,'more_delete','F'),
-(113,0,'https://github.com/MingMinter/vue_node_admin',0,'',0,'GitHub',1,0,'{\"title\":\"GitHub直达\",\"icon\":\"link\",\"noCache\":1}','/',16,'2023-04-11 11:24:24',0,NULL,'C');
+(113,0,'https://github.com/MingMinter/vue_node',0,'',0,'GitHub',1,0,'{\"title\":\"GitHub直达\",\"icon\":\"link\",\"noCache\":1}','/',16,'2023-04-11 11:24:24',0,NULL,'C');
 
 /*Table structure for table `tests` */
 
@@ -180,7 +180,7 @@ CREATE TABLE `tests` (
 
 /*Data for the table `tests` */
 
-insert  into `tests`(`id`,`name`,`remark`,`more_id`) values
+insert  into `tests`(`id`,`name`,`remark`,`more_id`) values 
 (3,'第一家店铺的数据1','第一',5),
 (5,'第二家店铺的数据1','第二',8),
 (8,'第二家店铺的数据2','第二',8),
@@ -203,11 +203,11 @@ CREATE TABLE `theme` (
   `menu_sub_active_text` varchar(255) DEFAULT '' COMMENT '当前选中展开文字',
   `menu_hover_bg` varchar(255) DEFAULT '' COMMENT 'hover背景',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `theme` */
 
-insert  into `theme`(`id`,`user_id`,`menu_bg`,`menu_sub_bg`,`menu_text`,`menu_active_text`,`menu_sub_active_text`,`menu_hover_bg`) values
+insert  into `theme`(`id`,`user_id`,`menu_bg`,`menu_sub_bg`,`menu_text`,`menu_active_text`,`menu_sub_active_text`,`menu_hover_bg`) values 
 (1,1,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
 (2,25,'#84EB16','#038293','#1C1C1C','#F3F359','#1C1C1C','#C7C7C7'),
 (3,18,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
@@ -215,7 +215,10 @@ insert  into `theme`(`id`,`user_id`,`menu_bg`,`menu_sub_bg`,`menu_text`,`menu_ac
 (5,31,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
 (6,32,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
 (7,33,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
-(8,34,'#304156','#304156','#bfcad5','#409eff','#fff','#001528');
+(8,34,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
+(9,35,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
+(10,36,'#304156','#304156','#bfcad5','#409eff','#fff','#001528'),
+(11,37,'#304156','#304156','#bfcad5','#409eff','#fff','#001528');
 
 /*Table structure for table `user` */
 
@@ -224,6 +227,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '名称',
+  `status` int(11) NOT NULL DEFAULT '1' COMMENT '状态',
   `roles_id` varchar(255) NOT NULL DEFAULT '' COMMENT '角色编号',
   `remark` varchar(255) DEFAULT '' COMMENT '备注',
   `admin` int(11) NOT NULL DEFAULT '0' COMMENT '管理员',
@@ -231,14 +235,15 @@ CREATE TABLE `user` (
   `more_id` int(11) NOT NULL DEFAULT '0' COMMENT '账号编号',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`name`,`roles_id`,`remark`,`admin`,`pwd`,`more_id`,`create_time`) values
-(1,'admin','1','管理员',1,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-05 15:32:33'),
-(25,'店铺2','12','中级管家',0,'f379eaf3c831b04de153469d1bec345e',8,'2023-03-16 15:32:33'),
-(18,'店铺1','13','初级管家',0,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-03 15:32:33');
+insert  into `user`(`id`,`name`,`status`,`roles_id`,`remark`,`admin`,`pwd`,`more_id`,`create_time`) values 
+(1,'admin',1,'1','管理员',1,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-05 15:32:33'),
+(25,'店铺2',1,'12','中级管家',0,'f379eaf3c831b04de153469d1bec345e',8,'2023-03-16 15:32:33'),
+(18,'店铺1',1,'13','初级管家',0,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-03 15:32:33'),
+(37,'禁用账号',0,'13','',0,'f379eaf3c831b04de153469d1bec345e',5,'2023-04-23 14:24:07');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

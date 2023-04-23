@@ -207,9 +207,9 @@ router.post("/delRoles", async (req, res) => {
 //添加用户
 router.post("/addUser", async (req, res) => {
     await utils.checkPermi({req,res,role:[systemSettings.user.userAdd]});
-    let sql = "INSERT INTO user(name,roles_id,remark,pwd,more_id,create_time) VALUES (?,?,?,?,?,?)", obj = req.body;
+    let sql = "INSERT INTO user(name,status,roles_id,remark,pwd,more_id,create_time) VALUES (?,?,?,?,?,?,?)", obj = req.body;
     await utils.existName({sql: "SELECT id FROM user WHERE  name=?", name: obj.name,res,msg:"用户名已被使用！",req});
-    pool.query(sql, [obj.name, obj.rolesId, obj.remark, obj.pwd, obj.moreId,new Date()], (err, result) => {
+    pool.query(sql, [obj.name, obj.status,obj.rolesId, obj.remark, obj.pwd, obj.moreId,new Date()], (err, result) => {
         if (err) return res.send(utils.returnData({code: -1,err}));
         let themeSql="INSERT INTO theme(user_id,menu_bg,menu_sub_bg,menu_text,menu_active_text,menu_sub_active_text,menu_hover_bg) VALUES (?,?,?,?,?,?,?)";
         pool.query(themeSql,[result.insertId,"#304156","#304156","#bfcad5","#409eff","#fff","#001528"],(themeErr,themeRes)=>{
@@ -226,7 +226,7 @@ router.post("/getUser", async (req, res) => {
     let obj=req.body;
     let {page,size}=utils.pageSize(obj.page,obj.size);
     let {total}=await utils.getSum({name:"user",where:`WHERE name LIKE "%${obj.name||''}%"`,res,req});
-    let sql = `SELECT a.id AS id,name,roles_id AS rolesId,remark,admin,more_id AS moreId,a.create_time AS createTime,b.menu_bg AS menuBg,b.menu_sub_bg AS menuSubBg,b.menu_text AS menuText,b.menu_active_text AS menuActiveText,b.menu_sub_active_text AS menuSubActiveText,b.menu_hover_bg AS menuHoverBg FROM user AS a LEFT JOIN theme b ON a.id=b.user_id WHERE name LIKE "%${obj.name||''}%" LIMIT ?,?`;
+    let sql = `SELECT a.id AS id,name,status,roles_id AS rolesId,remark,admin,more_id AS moreId,a.create_time AS createTime,b.menu_bg AS menuBg,b.menu_sub_bg AS menuSubBg,b.menu_text AS menuText,b.menu_active_text AS menuActiveText,b.menu_sub_active_text AS menuSubActiveText,b.menu_hover_bg AS menuHoverBg FROM user AS a LEFT JOIN theme b ON a.id=b.user_id WHERE name LIKE "%${obj.name||''}%" LIMIT ?,?`;
     pool.query(sql, [page,size],(err, result) => {
         if (err) return res.send(utils.returnData({code: -1,err,req}));
         res.send(utils.returnData({data: result,total}));
@@ -248,12 +248,12 @@ router.post("/upTheme", async (req, res) => {
 //修改用户
 router.post("/upUser", async (req, res) => {
     await utils.checkPermi({req,res,role:[systemSettings.user.userUp]});
-    let sql = "UPDATE  user SET name=?,roles_id=?,remark=?,more_id=? WHERE id=?", obj = req.body;
+    let sql = "UPDATE  user SET name=?,status=?,roles_id=?,remark=?,more_id=? WHERE id=?", obj = req.body;
     //总管理不能操作
     await utils.upAdmin({req,res,id:obj.id});
     let judgeUserNameRes = await utils.judgeUserName({sql:"SELECT name FROM user WHERE  id=?",name:obj.name,id:obj.id});
     if (judgeUserNameRes === 1) await utils.existName({sql: "SELECT id FROM user WHERE  name=?", name: obj.name,res,msg:"用户名已被使用！",req});
-    pool.query(sql, [obj.name, obj.rolesId, obj.remark, obj.moreId, obj.id], (err, result) => {
+    pool.query(sql, [obj.name, obj.status,obj.rolesId, obj.remark, obj.moreId, obj.id], (err, result) => {
         if (err) return res.send(utils.returnData({code: -1,err,req}));
         res.send(utils.returnData({data: result}));
     });
@@ -263,8 +263,11 @@ router.post("/upUser", async (req, res) => {
 router.post("/upUserPwd", async (req, res) => {
     await utils.checkPermi({req,res,role:[systemSettings.user.userPwd]});
     let sql = "UPDATE  user SET pwd=? WHERE id=?", obj = req.body;
-    //总管理不能操作
-    await utils.upAdmin({req,res,id:obj.id});
+    let getUserIdRes=await utils.getUserId({id:obj.id,req,res});
+    if(getUserIdRes.admin===1){
+        let user=await utils.getUserInfo(req,res);
+        if(user.admin!==1) return res.send(utils.returnData({code: -1,msg:"总管理密码只能总管理账号修改！",req}));
+    }
     pool.query(sql, [obj.pwd,obj.id], (err, result) => {
         if (err) return res.send(utils.returnData({code: -1,err,req}));
         res.send(utils.returnData({data: result}));

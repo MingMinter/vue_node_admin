@@ -31,14 +31,19 @@
           {{scope.row.name}} <el-tag v-if="scope.row.admin===1" size="mini" effect="dark">超级管理员</el-tag>
         </template>
       </el-table-column>
-
+      <el-table-column label="状态" align="center" prop="name">
+        <template slot-scope="scope">
+          <el-tag v-if="scope.row.status===1" size="mini" effect="dark">正常</el-tag>
+          <el-tag v-else size="mini" effect="dark" type="danger">禁用</el-tag>
+        </template>
+      </el-table-column>
       <el-table-column label="账号归属" align="center" prop="name" :formatter="formatMore" />
       <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="创建时间" align="center" prop="createTime" :formatter="formatterCreateTime" />
       <el-table-column label="操作" align="center" width="350">
         <template slot-scope="scope">
           <el-button size="mini" v-if="scope.row.admin!==1" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-          <el-button size="mini" v-if="scope.row.admin!==1" @click="upUserPwd(scope.row)" type="warning" icon="el-icon-edit">修改密码</el-button>
+          <el-button size="mini" @click="upUserPwd(scope.row)" type="warning" icon="el-icon-edit">修改密码</el-button>
           <el-button size="mini" v-if="scope.row.admin!==1" type="danger" @click="handleDelete(scope.$index, scope.row)">删除</el-button>
           <el-button size="mini" @click="upTheme(scope.row)" type="text" icon="el-icon-edit" >主题修改</el-button>
         </template>
@@ -61,7 +66,14 @@
           <el-input  v-model="form.pwd" placeholder="请输入密码">
           </el-input>
         </el-form-item>
-
+        <el-form-item label="状态" prop="status" >
+          <el-select v-model="form.status" placeholder="请选择状态" >
+            <el-option  label="正常" :value="1">
+            </el-option>
+            <el-option  label="禁用" :value="0">
+            </el-option>
+          </el-select>
+        </el-form-item>
         <el-form-item label="角色选择" prop="rolesId" v-if="form.admin!==1">
           <el-select v-model="form.rolesId" filterable placeholder="请选择角色" multiple>
             <el-option v-for="item in rolesArr" :key="item.id" :label="item.name" :value="item.id">
@@ -195,10 +207,9 @@ export default {
       })
     },
     resetForm () {
-      this.form = {};
+      this.form = {status:1};
     },
     handleEdit (index, row) {
-      const { id } = row;
       this.resetForm();
       this.form = {...row};
       this.$set(this.form, "rolesId", row.rolesId.split(","));
@@ -223,7 +234,8 @@ export default {
       });
     },
     upUserPwd(row){
-      this.$prompt('请输入需要修改密码', '提示', {
+      let {name,admin}=row;
+      this.$prompt(admin===1?`当前修改的是《总管理》密码，请务必再次确认！`:`当前修改的是《${name}》密码`, '温馨提示', {
         confirmButtonText: '确定修改',
         cancelButtonText: '取消',
         inputPattern: /.{6,15}/,
@@ -231,6 +243,10 @@ export default {
       }).then(async ({ value }) => {
         await upUserPwd({id:row.id,pwd:md5(value)});
         this.$message.success("修改成功！");
+        if(admin===1){
+          this.$store.dispatch("user/logout");
+          this.$router.replace("/login");
+        }
       })
     },
     upTheme(row){

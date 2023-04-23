@@ -83,7 +83,7 @@ module.exports = {
             if (!token) return res.send(this.returnData({code: 203,req}));
             let user = this.verToken(token);
             if (!user) return res.send(this.returnData({code: 203,req}));
-            let sql = "SELECT id,name,roles_id AS rolesId,admin,more_id AS moreId FROM user WHERE id=?";
+            let sql = "SELECT id,name,status,roles_id AS rolesId,admin,more_id AS moreId FROM user WHERE id=?";
             pool.query(sql, [user.uid], (err, result) => {
                 if (err) return res.send(this.returnData({code: -1, msg: "服务端用户信息获取错误！",err,req}));
                 if (result.length === 0) return res.send(this.returnData({code: -1, msg: "用户不存在！",err,req}));
@@ -219,6 +219,22 @@ module.exports = {
                 if(err||result.length===0) return res.send(this.returnData({code:-1,msg:"管理信息判断错误！！",err,req}));
                 if(result[0].role_key==="admin") return res.send(this.returnData({code:-1,msg:"无法对《角色总管理》执行此操作！",err,req}));
                 resolve(result);
+            })
+        })
+
+    },
+    /**
+     * 通过id获取用户信息
+     * @param object req 请求主体
+     * @param object res 响应主体
+     * @param number id 查询条件id
+     * */
+    getUserId({req,res,id}){
+        return new Promise((resolve, reject)=>{
+            let sql = "SELECT admin FROM user WHERE id=?";
+            pool.query(sql,[id],(err,result)=>{
+                if(err||result.length===0) return res.send(this.returnData({code:-1,msg:"用户信息错误！！",err,req}));
+                resolve(result[0]);
             })
         })
 
