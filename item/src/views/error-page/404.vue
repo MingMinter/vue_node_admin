@@ -9,11 +9,9 @@
       </div>
       <div class="bullshit">
         <div class="bullshit__oops">找不到页面!</div>
-        <div class="bullshit__info">对此有疑问？
-          <a style="color:#20a0ff" href="https://wallstreetcn.com" target="_blank">点击获取原因！</a>
-        </div>
         <div class="bullshit__headline">404</div>
-        <a href="" class="bullshit__return-home">回到首页</a>
+        <el-button type="primary" @click="$router.replace('/')">回到首页</el-button>
+        <link>
       </div>
     </div>
   </div>
