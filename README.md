@@ -1,6 +1,6 @@
-### 最新信息：预计一个月内会推出升级版本，建议大家点star收藏先。
+### 最新升级版已完成，预览地址：<a href="http://vuenodeupgrade.yknba.cn/#/login" target="_blank">点击进入效果预览</a>
 
-## 具体新功能如下：
+### 升级新功能如下：
 
 1. 整体进行优化代码，使得更小更容易上手。
 2. 加入登陆图形验证码验证，升级密码加密难度。
@@ -10,13 +10,15 @@
 6. 加入富文本编辑功能。
 7. 加入大屏统计echarts展示功能。
 
-**如果还有其他建议或者新功能推荐，可进入解答交流群进行推荐：**<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">点击加入 问题解答交流社区</a>
+
+
+### **目前仓库是旧版源码，升级版源码请移步到交流群获取：**<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">点击免费获取升级版源码</a>
 
 ------
 
 
 
-## 一、项目预览地址
+## 一、旧版项目预览地址
 
 - #### 		vue+node后台管理预览地址：<a href="http://vuenode.yknba.cn/" target="_blank">点击进入效果预览</a>
 
@@ -40,7 +42,7 @@
 1. ##### #克隆项目
 
    ```
-   git https://gitee.com/MMinter/vue_node.git
+   git https://github.com/MingMinter/vue_node_admin.git
    ```
 
 2. ##### #进入目录
@@ -100,7 +102,7 @@
 1. ##### 				#克隆项目（如果已经执行了前端页面启动的克隆，可略过这点）
 
    ```
-   git clone https://gitee.com/MMinter/vue_node.git
+   git clone https://github.com/MingMinter/vue_node_admin.git
    ```
 
 2. #####  #进入目录
