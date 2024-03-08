@@ -1,3 +1,7 @@
+## 最新消息：<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">vue3版本计划开发中！！点击获取最新进度消息~</a>
+
+
+
 ### 最新升级版已完成，预览地址：<a href="http://vuenodeupgrade.yknba.cn/#/login" target="_blank">点击进入效果预览</a>
 
 ### 升级新功能如下：
