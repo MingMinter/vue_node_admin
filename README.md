@@ -1,4 +1,4 @@
-## 最新消息：<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">vue3版本计划开发中！！点击获取最新进度消息~</a>
+## 最新消息：<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank"><font color="red">vue3版本已经开发完成！</font>点击获取最新vue3源码</a>
 
 
 
@@ -16,7 +16,7 @@
 
 
 
-### **目前仓库是旧版源码，升级版源码请移步到交流群获取：**<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">点击免费获取升级版源码</a>
+### **目前仓库是旧版源码（不建议继续使用），升级版源码请：**<a href="https://gitee.com/MMinter/vue_node_wiki/wikis/vue+node交流群" target="_blank">点击免费获取vue2升级版源码</a>
 
 ------
 
