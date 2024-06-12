@@ -24,7 +24,9 @@
 
 ## 一、旧版项目预览地址
 
-- #### 		vue+node后台管理预览地址：<a href="http://vuenode.yknba.cn/" target="_blank">点击进入效果预览</a>
+- #### 		vue+node后台管理旧版预览地址已失效
+
+- #### 请预览升级版：<a href="http://vuenodeupgrade.yknba.cn/#/login" target="_blank">点击进入效果预览</a>
 
 -    默认账号：admin
 
